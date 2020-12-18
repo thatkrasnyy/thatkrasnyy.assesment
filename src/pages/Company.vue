@@ -1,12 +1,23 @@
 <template>
   <div class="company">
-    Company
+    Company<pre>
+      {{ GET_COMPANIES }}
+    </pre>
   </div>
 </template>
 
 <script>
+import {mapGetters, mapActions} from "vuex";
+
 export default {
-  name: 'Company'
+  name: 'Company',
+  methods: {
+    ...mapActions(["FETCH_COMPANIES"])
+  },
+  computed: mapGetters(["GET_COMPANIES"]),
+  created() {
+    this.FETCH_COMPANIES()
+  }
 }
 </script>
 
