@@ -6,117 +6,67 @@
       <v-tab-item>
         <v-card>
           <v-card>
-            <v-card-title><span class="headline">{{ company.name }}</span></v-card-title>
+            <v-card-title><span class="headline ml-3">{{ company.name }}</span></v-card-title>
             <v-card-text>
               <v-container>
                 <v-row>
                   <v-col cols="6">
                     <v-card elevation="2">
                       <v-col cols="12">
-                        <p class="font-weight-black">Данные о продукте</p>
+                        <p class="font-weight-black">Данные о компаний</p>
                         <v-text-field
-                            v-model="firstname"
-                            :rules="nameRules"
-                            :counter="10"
-                            label="First name"
+                            v-model="company.name"
+                            :counter="30"
+                            label="Название компаний"
                             required
                         ></v-text-field>
                       </v-col>
                     </v-card>
                   </v-col>
                   <v-col cols="6">
-                      <v-card elevation="2">
-                        <v-col cols="12">
-                          <p class="font-weight-black">Наличие и доставка</p>
-                          <v-checkbox
-                              :label="Checkbox "
-                          ></v-checkbox>
-                          <v-combobox
-                              hide-selected
-                          ></v-combobox>
-                        </v-col>
-                      </v-card>
                     <v-card elevation="2">
                       <v-col cols="12">
-                      <p class="font-weight-black">Настройки</p>
-                      <v-text-field
-                          v-model="firstname"
-                          :rules="nameRules"
-                          :counter="10"
-                          label="First name"
-                          required
-                      ></v-text-field>
+                        <p class="font-weight-black">Статус компаний</p>
+                        <div class="v-input__slot">
+                          <label class="v-label theme--light">Общее количество товаров: </label>
+                          <div><span>{{ company.status.totalProducts }}</span></div>
+                        </div>
+                        <div class="v-input__slot">
+                          <label class="v-label theme--light">Доступные товары: </label>
+                          <div><span>{{ company.status.availableProducts }}</span></div>
+                        </div>
+                        <div class="v-input__slot">
+                          <label class="v-label theme--light">Недоступные товары: </label>
+                          <div><span>{{ company.status.totalProducts-company.status.availableProducts }}</span></div>
+                        </div>
+                        <div class="v-input__slot">
+                          <label class="v-label theme--light">Последнее дата изменений: </label>
+                          <div><span>{{ company.status.lastCheckDate.substring(0,10) }}</span></div>
+                        </div>
+                      </v-col>
+                    </v-card>
+                    <v-card class="mt-6" elevation="2">
+                      <v-col cols="12">
+                        <p class="font-weight-black">Настройки</p>
+                        <v-select
+                            v-model="cities"
+                            :items="company.cities"
+                            label="Города"
+                            data-vv-name="select"
+                            required
+                        ></v-select>
+                        <v-slider
+                            v-model="company.status.availableProducts"
+                            :max="company.status.totalProducts"
+                            label="Доступные товары"
+                            thumb-label="always"
+                        ></v-slider>
                       </v-col>
                     </v-card>
                   </v-col>
-                  <!--                  <v-col-->
-                  <!--                      cols="6"-->
-                  <!--                      sm="6"-->
-                  <!--                      md="4"-->
-                  <!--                  >-->
-                  <!--                    <v-text-field-->
-                  <!--                        label="Legal first name*"-->
-                  <!--                        required-->
-                  <!--                    ></v-text-field>-->
-                  <!--                  </v-col>-->
-                  <!--                  <v-col-->
-                  <!--                      cols="6"-->
-                  <!--                      sm="6"-->
-                  <!--                      md="4"-->
-                  <!--                  >-->
-                  <!--                    <v-text-field-->
-                  <!--                        label="Legal middle name"-->
-                  <!--                        hint="example of helper text only on focus"-->
-                  <!--                    ></v-text-field>-->
-                  <!--                  </v-col>-->
-                  <!--                  <v-col-->
-                  <!--                      cols="12"-->
-                  <!--                      sm="6"-->
-                  <!--                      md="4"-->
-                  <!--                  >-->
-                  <!--                    <v-text-field-->
-                  <!--                        label="Legal last name*"-->
-                  <!--                        hint="example of persistent helper text"-->
-                  <!--                        persistent-hint-->
-                  <!--                        required-->
-                  <!--                    ></v-text-field>-->
-                  <!--                  </v-col>-->
-                  <!--                  <v-col cols="12">-->
-                  <!--                    <v-text-field-->
-                  <!--                        label="Email*"-->
-                  <!--                        required-->
-                  <!--                    ></v-text-field>-->
-                  <!--                  </v-col>-->
-                  <!--                  <v-col cols="12">-->
-                  <!--                    <v-text-field-->
-                  <!--                        label="Password*"-->
-                  <!--                        type="password"-->
-                  <!--                        required-->
-                  <!--                    ></v-text-field>-->
-                  <!--                  </v-col>-->
-                  <!--                  <v-col-->
-                  <!--                      cols="12"-->
-                  <!--                      sm="6"-->
-                  <!--                  >-->
-                  <!--                    <v-select-->
-                  <!--                        :items="['0-17', '18-29', '30-54', '54+']"-->
-                  <!--                        label="Age*"-->
-                  <!--                        required-->
-                  <!--                    ></v-select>-->
-                  <!--                  </v-col>-->
-                  <!--                  <v-col-->
-                  <!--                      cols="12"-->
-                  <!--                      sm="6"-->
-                  <!--                  >-->
-                  <!--                    <v-autocomplete-->
-                  <!--                        :items="['Skiing', 'Ice hockey', 'Soccer', 'Basketball', 'Hockey', 'Reading', 'Writing', 'Coding', 'Basejump']"-->
-                  <!--                        label="Interests"-->
-                  <!--                        multiple-->
-                  <!--                    ></v-autocomplete>-->
-                  <!--                  </v-col>-->
                 </v-row>
               </v-container>
-              <small>*indicates required field</small>
+              <small>*указывает обязательное поле</small>
             </v-card-text>
             <v-card-actions>
               <v-spacer></v-spacer>
@@ -172,7 +122,9 @@
 <script>
 export default {
   data() {
-    return {}
+    return {
+      cities: ""
+    }
   },
   props: {
     dialog: {
@@ -184,6 +136,9 @@ export default {
     close() {
       this.$emit('update:dialog', false)
     }
+  },
+  mounted() {
+    console.log(this.company)
   }
 
 }
