@@ -1,13 +1,14 @@
 <template>
   <div class="company">
+    <notifications group="company"/>
     <v-card class="mx-auto" width="400">
       <v-card-title>Companies</v-card-title>
-      <div v-for="(item, index) in companiesList" :key="index">
-        <v-list-item dense>
-          <item_avatar :avatar_name.sync="item.name"/>
-          <item_content :company.sync="item"/>
-        </v-list-item>
-      </div>
+        <div v-for="(item, index) in companiesList" :key="index">
+          <v-list-item dense>
+            <item_avatar :avatar_name.sync="item.name"/>
+            <item_content :company.sync="item"/>
+          </v-list-item>
+        </div>
     </v-card>
   </div>
 </template>
@@ -25,7 +26,7 @@ export default {
   computed: {
     companiesList() {
       return this.$store.getters.GET_COMPANIES
-    }
+    },
   },
   beforeCreate() {
     this.$store.dispatch('FETCH_COMPANIES');

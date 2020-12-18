@@ -3,6 +3,8 @@ import App from './App.vue'
 import store from './store'
 import vuetify from '@/plugins/vuetify'
 
+require('@/plugins/notification')
+
 Vue.config.productionTip = false
 
 new Vue({
