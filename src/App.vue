@@ -2,22 +2,22 @@
   <v-app>
     <v-main>
       <v-container>
-        Hello World
+        <Company/>
       </v-container>
     </v-main>
   </v-app>
 </template>
 
-<!--<script>-->
-<!--import HelloWorld from './components/HelloWorld.vue'-->
+<script>
+import Company from './pages/Company.vue'
 
-<!--export default {-->
-<!--  name: 'App',-->
-<!--  components: {-->
-<!--    HelloWorld-->
-<!--  }-->
-<!--}-->
-<!--</script>-->
+export default {
+  name: 'App',
+  components: {
+    Company
+  }
+}
+</script>
 
 <style>
 #app {
