@@ -29,9 +29,6 @@ export default {
   },
   beforeCreate() {
     this.$store.dispatch('FETCH_COMPANIES');
-  },
-  mounted() {
-    console.log(this.companiesList)
   }
 }
 </script>

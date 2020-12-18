@@ -136,10 +136,6 @@ export default {
     close() {
       this.$emit('update:dialog', false)
     }
-  },
-  mounted() {
-    console.log(this.company)
   }
-
 }
 </script>

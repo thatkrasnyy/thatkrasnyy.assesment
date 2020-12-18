@@ -21,9 +21,6 @@ export default {
   components: {v_card},
   props: {
     company:{type: Object}
-  },
-  // mounted: function () {
-  //   console.log(this.company)
-  // }
+  }
 }
 </script>
