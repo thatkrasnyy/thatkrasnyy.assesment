@@ -1,82 +1,119 @@
 <template>
-  <v-dialog v-model="dialog" persistent max-width="600px">
+  <v-dialog v-model="dialog" persistent max-width="900px">
     <v-tabs>
       <v-tab>Общее</v-tab>
       <v-tab>Характеристики</v-tab>
       <v-tab-item>
         <v-card>
           <v-card>
-            <v-card-title>
-              <span class="headline">User Profile</span>
-            </v-card-title>
+            <v-card-title><span class="headline">{{ company.name }}</span></v-card-title>
             <v-card-text>
               <v-container>
                 <v-row>
-                  <v-col
-                      cols="12"
-                      sm="6"
-                      md="4"
-                  >
-                    <v-text-field
-                        label="Legal first name*"
-                        required
-                    ></v-text-field>
+                  <v-col cols="6">
+                    <v-card elevation="2">
+                      <v-col cols="12">
+                        <p class="font-weight-black">Данные о продукте</p>
+                        <v-text-field
+                            v-model="firstname"
+                            :rules="nameRules"
+                            :counter="10"
+                            label="First name"
+                            required
+                        ></v-text-field>
+                      </v-col>
+                    </v-card>
                   </v-col>
-                  <v-col
-                      cols="12"
-                      sm="6"
-                      md="4"
-                  >
-                    <v-text-field
-                        label="Legal middle name"
-                        hint="example of helper text only on focus"
-                    ></v-text-field>
+                  <v-col cols="6">
+                      <v-card elevation="2">
+                        <v-col cols="12">
+                          <p class="font-weight-black">Наличие и доставка</p>
+                          <v-checkbox
+                              :label="Checkbox "
+                          ></v-checkbox>
+                          <v-combobox
+                              hide-selected
+                          ></v-combobox>
+                        </v-col>
+                      </v-card>
+                    <v-card elevation="2">
+                      <v-col cols="12">
+                      <p class="font-weight-black">Настройки</p>
+                      <v-text-field
+                          v-model="firstname"
+                          :rules="nameRules"
+                          :counter="10"
+                          label="First name"
+                          required
+                      ></v-text-field>
+                      </v-col>
+                    </v-card>
                   </v-col>
-                  <v-col
-                      cols="12"
-                      sm="6"
-                      md="4"
-                  >
-                    <v-text-field
-                        label="Legal last name*"
-                        hint="example of persistent helper text"
-                        persistent-hint
-                        required
-                    ></v-text-field>
-                  </v-col>
-                  <v-col cols="12">
-                    <v-text-field
-                        label="Email*"
-                        required
-                    ></v-text-field>
-                  </v-col>
-                  <v-col cols="12">
-                    <v-text-field
-                        label="Password*"
-                        type="password"
-                        required
-                    ></v-text-field>
-                  </v-col>
-                  <v-col
-                      cols="12"
-                      sm="6"
-                  >
-                    <v-select
-                        :items="['0-17', '18-29', '30-54', '54+']"
-                        label="Age*"
-                        required
-                    ></v-select>
-                  </v-col>
-                  <v-col
-                      cols="12"
-                      sm="6"
-                  >
-                    <v-autocomplete
-                        :items="['Skiing', 'Ice hockey', 'Soccer', 'Basketball', 'Hockey', 'Reading', 'Writing', 'Coding', 'Basejump']"
-                        label="Interests"
-                        multiple
-                    ></v-autocomplete>
-                  </v-col>
+                  <!--                  <v-col-->
+                  <!--                      cols="6"-->
+                  <!--                      sm="6"-->
+                  <!--                      md="4"-->
+                  <!--                  >-->
+                  <!--                    <v-text-field-->
+                  <!--                        label="Legal first name*"-->
+                  <!--                        required-->
+                  <!--                    ></v-text-field>-->
+                  <!--                  </v-col>-->
+                  <!--                  <v-col-->
+                  <!--                      cols="6"-->
+                  <!--                      sm="6"-->
+                  <!--                      md="4"-->
+                  <!--                  >-->
+                  <!--                    <v-text-field-->
+                  <!--                        label="Legal middle name"-->
+                  <!--                        hint="example of helper text only on focus"-->
+                  <!--                    ></v-text-field>-->
+                  <!--                  </v-col>-->
+                  <!--                  <v-col-->
+                  <!--                      cols="12"-->
+                  <!--                      sm="6"-->
+                  <!--                      md="4"-->
+                  <!--                  >-->
+                  <!--                    <v-text-field-->
+                  <!--                        label="Legal last name*"-->
+                  <!--                        hint="example of persistent helper text"-->
+                  <!--                        persistent-hint-->
+                  <!--                        required-->
+                  <!--                    ></v-text-field>-->
+                  <!--                  </v-col>-->
+                  <!--                  <v-col cols="12">-->
+                  <!--                    <v-text-field-->
+                  <!--                        label="Email*"-->
+                  <!--                        required-->
+                  <!--                    ></v-text-field>-->
+                  <!--                  </v-col>-->
+                  <!--                  <v-col cols="12">-->
+                  <!--                    <v-text-field-->
+                  <!--                        label="Password*"-->
+                  <!--                        type="password"-->
+                  <!--                        required-->
+                  <!--                    ></v-text-field>-->
+                  <!--                  </v-col>-->
+                  <!--                  <v-col-->
+                  <!--                      cols="12"-->
+                  <!--                      sm="6"-->
+                  <!--                  >-->
+                  <!--                    <v-select-->
+                  <!--                        :items="['0-17', '18-29', '30-54', '54+']"-->
+                  <!--                        label="Age*"-->
+                  <!--                        required-->
+                  <!--                    ></v-select>-->
+                  <!--                  </v-col>-->
+                  <!--                  <v-col-->
+                  <!--                      cols="12"-->
+                  <!--                      sm="6"-->
+                  <!--                  >-->
+                  <!--                    <v-autocomplete-->
+                  <!--                        :items="['Skiing', 'Ice hockey', 'Soccer', 'Basketball', 'Hockey', 'Reading', 'Writing', 'Coding', 'Basejump']"-->
+                  <!--                        label="Interests"-->
+                  <!--                        multiple-->
+                  <!--                    ></v-autocomplete>-->
+                  <!--                  </v-col>-->
                 </v-row>
               </v-container>
               <small>*indicates required field</small>
@@ -140,7 +177,8 @@ export default {
   props: {
     dialog: {
       default: false
-    }
+    },
+    company: {}
   },
   methods: {
     close() {

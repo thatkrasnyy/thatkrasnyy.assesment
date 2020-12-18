@@ -7,7 +7,7 @@ let getters = {
     GET_COMPANIES: state => state.companies
 }
 let mutations = {
-    SET_COMPANIES: (state, companies) => state.companies = companies
+    SET_COMPANIES: (state, companies) => state.companies.push(companies)
 }
 let actions = {
     FETCH_COMPANIES({ commit }) {

@@ -1,11 +1,11 @@
 <template>
   <div @click="dialog=true">
     <v-list-item-content>
-      <v-list-item-title>{{ company_name }}</v-list-item-title>
-      <v-list-item-subtitle>Products: {{ company_status.availableProducts }}</v-list-item-subtitle>
-      <v-list-item-subtitle>Last check: {{ company_status.lastCheckDate }}</v-list-item-subtitle>
+      <v-list-item-title>{{ company.name }}</v-list-item-title>
+      <v-list-item-subtitle>Products: {{ company.status.availableProducts }}</v-list-item-subtitle>
+      <v-list-item-subtitle>Last check: {{ company.status.lastCheckDate }}</v-list-item-subtitle>
     </v-list-item-content>
-    <v_card :dialog.sync="dialog"/>
+    <v_card :dialog.sync="dialog" :company.sync="company"/>
   </div>
 </template>
 <script>
@@ -20,11 +20,10 @@ export default {
   },
   components: {v_card},
   props: {
-    company_name: {required: true},
-    company_status: {
-      availableProducts: {},
-      lastCheckDate: {},
-    }
-  }
+    company:{type: Object}
+  },
+  // mounted: function () {
+  //   console.log(this.company)
+  // }
 }
 </script>
